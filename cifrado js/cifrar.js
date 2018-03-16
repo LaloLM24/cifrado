@@ -4,6 +4,10 @@ Algoritmo de cifrado programado por Eduardo López Melo
 
 function cifrar (mensaje, contra)
 {
+    /********************
+     * Función Principal*
+     ********************/
+
     var mensaje = document.getElementById('mensaje').value;
     var contra = document.getElementById('contra').value;
 
@@ -21,5 +25,33 @@ function cifrar (mensaje, contra)
     console.log(valorLongitudContra);
     /*fin*/
 
-    
+    var tamanioBloque = calcularTamanioBloque (valorLongitudMensaje , valorLongitudContra);
+    console.log("El tamaño de bloque es: " + tamanioBloque);
+
+}
+
+
+
+function calcularTamanioBloque(valorLongitudMensaje , valorLongitudContra)
+{
+     /**********************************************************
+     * Es para calcular de manera inmediata un tamaño de bloque*
+    ************************************************************/   
+    var tamBloque = 2;
+    var comprobar = false;
+    do
+    {
+        if( tamBloque < valorLongitudMensaje || tamBloque < valorLongitudContra)
+        {
+            tamBloque = tamBloque * 2;
+            /*Comprobar tamaño de bloque*/
+            //console.log(tamBloque);
+            /*fin*/
+        }   
+        else 
+        {
+            comprobar = true;
+        }
+    }while(comprobar == false);
+    return tamBloque;
 }
